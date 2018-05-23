@@ -1,0 +1,17 @@
+#https://docs.openshift.org/latest/architecture/core_concepts/pods_and_services.html 
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:                                
+    app: simple-app
+spec:
+  containers:                            
+  - env:                                 
+    - name: MY_ENV_VAR
+      value: testtest
+    image: 
+    imagePullPolicy: Always
+    name: my-simple-pod
+    ports:                              
+    - containerPort: 5000
+      protocol: TCP
