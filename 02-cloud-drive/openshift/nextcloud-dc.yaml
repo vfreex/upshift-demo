@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: nextcloud-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nextcloud
+    spec:
+      containers:
+      - name: nextcloud-apache
+        image: docker.io/nextcloud:13-apache
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: nextcloud-files
+          subPath: html
+      volumes:
+      - name: nextcloud-files
+        persistentVolumeClaim:
+          claimName: nextcloud-pvc

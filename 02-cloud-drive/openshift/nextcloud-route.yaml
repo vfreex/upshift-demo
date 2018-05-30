@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: nextcloud
+spec:
+  #host: nextcloud-yuxzhu.int.open.paas.redhat.com
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: nextcloud-app
+    weight: 100
+  wildcardPolicy: None
+
